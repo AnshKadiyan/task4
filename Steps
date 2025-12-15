@@ -1,0 +1,36 @@
+1.Open firewall configuration tool (Windows Firewall or terminal for UFW).
+    -> Installed using sudo apt install ufw -y
+
+
+2.List current firewall rules.
+    -> No current rules
+
+
+3.Add a rule to block inbound traffic on a specific port (e.g., 23 for Telnet).
+    -> Blocked the port for ssh by the command: "sudo ufw deny 22"
+
+
+4.Test the rule by attempting to connect to that port locally or remotely.
+    -> Tested through my virtual machine, enalbing the firewall makes the host seem down if using the command: nmap <IP>
+    -> use the command with option "-Pn" to skip the host discovery part and start the host scanning 
+    -> the command "nmap -Pn -p22 <IP>" took almost 3 minutes and the result came out as all the ports are filtered, that means the firewall is working
+
+
+5.Add rule to allow SSH (port 22) if on Linux.
+    -> to allow ssh run the command: "sudo ufw allow 22"
+    -> the result for this scan came out to be: the port 22 is open, service is ssh
+
+
+6.Remove the test block rule to restore original state.
+    -> sudo ufw delete 1, then press y
+    -> OR sudo ufw reset, then press y
+
+
+7.Document commands or GUI steps used.
+    -> included the screenshots in another file
+
+
+8.Summarize how firewall filters traffic.
+    -> firewall checks each packet and then matches the rules defined for the port, protocol, direction, source/destination, if it is in the allow list then it is allowd but,
+        if it is in the deny list then it is not allowed.
+
